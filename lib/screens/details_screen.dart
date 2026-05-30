@@ -4,54 +4,36 @@ import 'package:flutter/material.dart';
 import '../models/meal.dart';
 
 class DetailsScreen extends StatelessWidget {
-
   const DetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     // Rebem el Meal enviat des dels widgets
-    final Meal meal =
-        ModalRoute.of(context)!.settings.arguments as Meal;
+    final Meal meal = ModalRoute.of(context)!.settings.arguments as Meal;
 
     return Scaffold(
-
       body: CustomScrollView(
-
         slivers: [
-
           // ==================================================
           // AppBar amb imatge gran
           // ==================================================
           SliverAppBar(
-
             expandedHeight: 300,
-
             floating: false,
             pinned: true,
-
             backgroundColor: Colors.orange,
-
             flexibleSpace: FlexibleSpaceBar(
-
               centerTitle: true,
-
               title: Text(
                 meal.strMeal,
-
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                 ),
               ),
-
               background: FadeInImage(
-
-                placeholder:
-                    const AssetImage('assets/no-image.jpg'),
-
+                placeholder: const AssetImage('assets/no-image.jpg'),
                 image: NetworkImage(meal.strMealThumb),
-
                 fit: BoxFit.cover,
               ),
             ),
@@ -61,24 +43,15 @@ class DetailsScreen extends StatelessWidget {
           // Informació del plat
           // ==================================================
           SliverList(
-
             delegate: SliverChildListDelegate([
-
               Padding(
-
                 padding: const EdgeInsets.all(20),
-
                 child: Column(
-
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start,
-
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     // Categoria
                     Text(
                       'Categoria',
-
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -98,7 +71,6 @@ class DetailsScreen extends StatelessWidget {
                     // País / Àrea
                     Text(
                       'Origen',
-
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -118,7 +90,6 @@ class DetailsScreen extends StatelessWidget {
                     // Instruccions
                     Text(
                       'Instruccions',
-
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -130,9 +101,7 @@ class DetailsScreen extends StatelessWidget {
 
                     Text(
                       meal.strInstructions,
-
                       textAlign: TextAlign.justify,
-
                       style: const TextStyle(
                         fontSize: 16,
                         height: 1.5,
